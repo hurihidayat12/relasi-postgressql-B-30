@@ -3,6 +3,7 @@
 <head>
     <title>Make_Navigator_Bar</title>
     <link rel="stylesheet" href="../public/assets/css/style_1.css">
+    
 </head>
 <body>
    
@@ -26,16 +27,9 @@
                         <a href="index.html">Project</a>
                     </li>
             </ul>
-                    <ul style="margin-left: 260px;">
-                    <li> 
-                        <a href="/login">Login</a>
-                    </li>
-                    <li> 
-                        <a href="/register">register</a>
-                    </li>
-                    </ul>
-                        {{#if isLogin}}
-                  <ul style="margin-left: 260px;">
+                <div style="padding-left: 100px;">
+                {{#if isLogin}}
+                  <ul style="margin-left: 260px; margin-right: 100px ">
                     <li> 
                         <a href="/login">Hallo, {{user.name}}</a>
                     </li>
@@ -43,7 +37,7 @@
                         <a href="/logout">Logout</a>
                     </li>
                   </ul>
-              {{else}}
+                {{else}}
                   <ul style="margin-left: 260px;">
                     <li> 
                         <a href="/login">Login</a>
@@ -53,6 +47,7 @@
                     </li>
                   </ul>
                {{/if}}
+        </div>
       </div>
 
       <div class="right">
@@ -67,11 +62,6 @@
         </div>
       {{/if}}
                
-        </div>
-
-        <div class="right">
-            <a href="/contact">Contact</a>
-        </div>
     </nav>
     <!--Finish Navbar-->
 
@@ -103,14 +93,13 @@
                 <table cellspacing='0' border="2" >
                     <tr style="background-color: darkgoldenrod;">
                         <th>Release Project</th>
-                        <th> Month</th>
                         <th> Year</th>
                     </tr>
                     {{#each index}}
                     <tr>
-                        <td style="text-align: left;"> Project Fullstack Web Dev</td>
-                        <td>{{this.info}}</td>
-                        <td> {{this.years}}</td>
+                        <td style="text-align: left;"> {{this.info}}</td>
+                  
+                        <td>{{this.years}}</td>
                     </tr>
                     {{!-- <tr>
                         <td style="text-align: left;"> Belajar yang rajin</td>

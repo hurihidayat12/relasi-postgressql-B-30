@@ -61,8 +61,8 @@ function getDistanceTime(time) {
     let miliSecond =  1000; // = 1 detik
     let secondinHours = 3600; //1jam = 3600 mili second
     let hoursinDay = 23; //23 jam dalam 1 hari
-    let minutes = 60;
-    let seconds = 60;
+    let minutes = 60; //1 menit 60 second
+    let seconds = 60; //1 second 60 mili second
   
     let distanceDay = Math.floor(distance / (miliSecond * secondinHours * hoursinDay)); //untuk mendapakatkan hari
     let distanceHours  = Math.floor(distance / (miliSecond * seconds  * minutes )); //untuk mendapatkan jam
@@ -90,17 +90,16 @@ function getDistanceTime(time) {
 // funtion memiliki2 parameter
 app.get('/', function(request, response){
    
-    const query = `SELECT * FROM tb_expe`
 
     db.connect(function(err, client, done){
         if (err) throw err
 
-        client.query(query,  function(err, result){
+        client.query(`SELECT * FROM tb_expe`,  function(err, result){
             if (err) throw err
 
-            let data= result.rows[0]
+            let data= result.rows
             
-            response.render('index', {isLogin: request.session.isLogin, user: request.session.user, index: data})
+            response.render('index', {index: data})
 
         })
     })

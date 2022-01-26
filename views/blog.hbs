@@ -32,12 +32,12 @@
                     <li > 
                         <a href="/login">Hallo, {{user.name}}</a>
                     </li>
-                    <li style="margin-left: 20px; text-align: center; " > 
+                    <li style="margin-left: 20px; text-align: center; justify-content: end; font-size: 20px; color:brown" > 
                         <a href="/logout">Logout</a>
                     </li>
                   </ul>
               {{else}}
-                  <ul >
+                  <ul style="margin-left: 390px;">
                     <li> 
                         <a href="/login">Login</a>
                     </li>
@@ -55,9 +55,10 @@
 
 
       {{#if messages.success}}
-        <div  class="alert alert-success" role="alert" style= "background-color: aliceblue; height: 50px">
+        <div  class="alert alert-success" role="alert" style= "background-color: aliceblue; height: 50px; text-align:center">
             {{messages.success}}
         </div>
+  
       {{/if}}
 
 

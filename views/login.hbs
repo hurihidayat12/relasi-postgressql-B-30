@@ -54,6 +54,13 @@
         </div>
       </nav>
       <!-- finish navbar -->
+      
+      {{#if messages.success}}
+        <div  class="alert alert-success" role="alert" style= "background-color: aliceblue; height: 50px">
+            {{messages.success}}
+        </div>
+  
+      {{/if}}
   {{#if message.danger}}
     <div class="alert alert-danger" role="alert">
     {{message.danger}}
@@ -68,12 +75,12 @@
         <form class="form-control-lg" action="/login" method="POST">
                 <div class="mb-3">
             <label for="input-email" class="form-label">E-Mail</label>
-            <input name="inputEmail" type="text" class="border-warning form-control" id="input-email" >
+            <input name="inputEmail" type="email" class="border-warning form-control" id="input-email" >
           
           </div>
                 <div class="mb-3">
             <label for="input-Password" class="form-label">Password</label>
-            <input name="inputPassword" type="text" class="border-warning form-control" id="input-Password" >
+            <input name="inputPassword" type="password" class="border-warning form-control" id="input-Password" >
           
           </div>
       

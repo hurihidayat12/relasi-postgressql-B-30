@@ -3,6 +3,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const flash = require('express-flash');
 const session = require('express-session');
+const multer = require('multer')
 
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(flash())
 app.use(
     session({
         cookie: {
-            maxAge: 2 * 60 * 60 * 1000, 
+            maxAge: 2 * 60 * 60 * 1000,  //= 2 jam 
             secure: false,
             httpOnly: true
         },
@@ -30,7 +31,7 @@ app.use(
         resave: false,
         secret: 'secretValue'
 
- }))
+}))
 
 // let isLogin = true;
 function getfullTime(time) {
@@ -89,7 +90,6 @@ function getDistanceTime(time) {
 
 // funtion memiliki2 parameter
 app.get('/', function(request, response){
-   
 
     db.connect(function(err, client, done){
         if (err) throw err
@@ -100,7 +100,6 @@ app.get('/', function(request, response){
             let data= result.rows
             
             response.render('index', {index: data})
-
         })
     })
 });
@@ -160,7 +159,7 @@ app.get('/blog-detail/:id', function(request, response){
 app.get('/add-blog', function(request, response){
     
     if(!request.session.isLogin) {
-        request.flash('danger', "please login ^_^ ")
+        request.flash('danger', "please login")
         response.redirect('/login')
     }
 
@@ -169,7 +168,6 @@ app.get('/add-blog', function(request, response){
 
 app.post('/blog', upload.single('inputImage'), function(request, response){
     
-
     let data = request.body
 
     const authorId = request.session.user.id
@@ -201,7 +199,7 @@ app.get('/update/:id', function(request, response){
         client.query(`SELECT * FROM tb_blog WHERE id = ${id}`, function(err, result){
             if (err) throw err
       
-            let dataUpdate = result.rows[0]    
+            let dataUpdate = result.rows[0]   
            response.render('update', {id:id, blog:dataUpdate })
         })
     })
@@ -210,10 +208,9 @@ app.get('/update/:id', function(request, response){
 app.post('/update/:id', upload.single('updateImage'), function(request, response){
    
     let id = request.params.id
-    const image = request.file.filename
     let data = request.body
 
-    let query = `UPDATE tb_blog SET title='${data.updateTitle}', content='${data.updateContent}', image='${image}', 
+    let query = `UPDATE tb_blog SET title = '${data.updateTitle}', content = '${data.updateContent}', image = '${image}', 
     WHERE id = '${id}'; `
     
    
@@ -286,7 +283,6 @@ app.post('/login', function(request, response){
         
                 return response.redirect('/login')
             }   
-
             let isMatch = bcrypt.compareSync(inputPassword, result.rows[0].password)
                 // console.log(isMatch);
 

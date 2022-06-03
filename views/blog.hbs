@@ -104,8 +104,8 @@
       <hr class="line" /> --}}
       <div id="contents" class="blog-list">
         <!-- dynamic content would be here -->
-        {{#each blogs}}
-          <div class="blog-list-item">
+        {{#each blog}}
+          <d class="blog-list-item">
             <div class="blog-image">
               <img src="/uploads/{{this.image}}" alt="" />
             </div>
@@ -117,7 +117,6 @@
                 <a href="/delete-blog/{{this.id}}" class="btn-delete">Delete Blog</a>
               </div>
             {{/if}}
-          
               <h1>
                 <a href="/blog-detail/{{this.id}}" target="_blank"
                 >{{this.title}}</a>
@@ -132,8 +131,8 @@
                 <span>{{this.distance}}</span>
               </div>
     
-        </div>
-          </div>
+             </div>
+          </d iv>
         {{/each}}
   </div>
        

@@ -5,7 +5,6 @@ const flash = require('express-flash');
 const session = require('express-session');
 const multer = require('multer')
 
-
 const app = express();
 const PORT = 3000;
 
@@ -17,7 +16,7 @@ app.set('view engine', 'hbs');
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/uploads', express.static(__dirname + '/uploads')),
 app.use(express.urlencoded({extended : false}));
-
+    
 app.use(flash())
 app.use(
     session({
@@ -148,7 +147,6 @@ app.get('/blog-detail/:id', function(request, response){
             if(err) throw err;
 
             let data = result.rows[0];
-
             response.render('blog-detail', {blog: data})
         })
     })
@@ -200,7 +198,7 @@ app.get('/update/:id', function(request, response){
             if (err) throw err
       
             let dataUpdate = result.rows[0]   
-           response.render('update', {id:id, blog:dataUpdate })
+           response.render('update', {id:id, blog: dataUpdate })
         })
     })
 });

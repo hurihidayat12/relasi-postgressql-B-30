@@ -8,15 +8,17 @@ body{
     /*background: linear-gradient(rgb(189, 141, 19), rgb(199, 185, 143));     
     background-imag e: url("image/da.jpg" ); */
     background-size: cover;
-    background-color: rgb(209, 178, 147);
+    background-color: #F5EEDC8E;
+
 }
 
 nav {
-    font-size: 17px;
-    background-color:rgba(184, 135, 11, 0.863);
+    font-size: 20px;
     display: flex;
     height: 6vh;
     padding: 10px;
+    background-color: #F5EEDCCE;
+    
 }
 
 nav img {
